@@ -3,7 +3,7 @@
 
   "setupYourAccount": "Configure sua conta.",
   "organizationStepTitle": "Nomeie sua organização",
-  "organizationStepWelcome": "Bem-vindo ao Worklenz!",
+  "organizationStepWelcome": "Bem-vindo ao PlenejaGov!",
   "organizationStepDescription": "Vamos começar configurando sua organização. Este será o espaço de trabalho principal para sua equipe.",
   "organizationStepLabel": "Nome da organização",
   "organizationStepPlaceholder": "ex. Corporação Acme",
@@ -29,6 +29,9 @@
   "projectStepTitle": "Crie seu primeiro projeto",
   "projectStepLabel": "Em qual projeto você está trabalhando agora?",
   "projectStepPlaceholder": "ex. Plano de Marketing",
+
+  "tasksStepLabel": "Digite algumas tarefas que você vai fazer em",
+  "tasksStepAddAnother": "Adicionar outro",
 
   "step2Title": "Crie suas primeiras tarefas",
   "step2InputLabel": "Digite algumas tarefas que você vai fazer em",
@@ -76,7 +79,7 @@
   
   "yourNeedsTitle": "Quais são suas principais necessidades?",
   "yourNeedsDescription": "Selecione todas que se aplicam para nos ajudar a configurar seu espaço de trabalho",
-  "yourNeedsQuestion": "Como você usará principalmente o Worklenz?",
+  "yourNeedsQuestion": "Como você usará principalmente o PlenejaGov?",
   "useCaseTaskOrg": "Organizar e acompanhar tarefas",
   "useCaseTeamCollab": "Trabalhar juntos perfeitamente", 
   "useCaseResourceMgmt": "Gerenciar tempo e recursos",
@@ -88,12 +91,12 @@
   "previousToolsPlaceholder": "ex., Asana, Trello, Jira, Monday.com, etc.",
   
   "discoveryTitle": "Uma última coisa...",
-  "discoveryDescription": "Ajude-nos a entender como você descobriu o Worklenz",
+  "discoveryDescription": "Ajude-nos a entender como você descobriu o PlenejaGov",
   "discoveryQuestion": "Como você soube sobre nós?",
   "allSetTitle": "Você está pronto!",
-  "allSetDescription": "Vamos criar seu primeiro projeto e começar com o Worklenz",
+  "allSetDescription": "Vamos criar seu primeiro projeto e começar com o PlenejaGov",
   "surveyCompleteTitle": "Obrigado!",
-  "surveyCompleteDescription": "Seu feedback nos ajuda a melhorar o Worklenz para todos",
+  "surveyCompleteDescription": "Seu feedback nos ajuda a melhorar o PlenejaGov para todos",
   "aboutYouStepName": "Sobre você",
   "yourNeedsStepName": "Suas necessidades", 
   "discoveryStepName": "Descoberta",
@@ -128,7 +131,7 @@
   "addAnotherTask": "Adicionar outra tarefa ({{current}}/{{max}})",
 
   "surveyStepTitle": "Conte-nos sobre você",
-  "surveyStepLabel": "Ajude-nos a personalizar sua experiência no Worklenz respondendo algumas perguntas.",
+  "surveyStepLabel": "Ajude-nos a personalizar sua experiência no PlenejaGov respondendo algumas perguntas.",
   
   "organizationType": "O que melhor descreve sua organização?",
   "organizationTypeFreelancer": "Freelancer",
@@ -146,7 +149,7 @@
   "userRoleOperations": "Operações",
   "userRoleOther": "Outro",
   
-  "mainUseCases": "Para que você usará principalmente o Worklenz?",
+  "mainUseCases": "Para que você usará principalmente o PlenejaGov?",
   "mainUseCasesTaskManagement": "Gerenciamento de tarefas",
   "mainUseCasesTeamCollaboration": "Colaboração em equipe",
   "mainUseCasesResourcePlanning": "Planejamento de recursos",
@@ -154,10 +157,10 @@
   "mainUseCasesTimeTracking": "Controle de tempo",
   "mainUseCasesOther": "Outro",
   
-  "previousTools": "Que ferramenta(s) você usava antes do Worklenz?",
+  "previousTools": "Que ferramenta(s) você usava antes do PlenejaGov?",
   "previousToolsPlaceholder": "ex. Trello, Asana, Monday.com",
   
-  "howHeardAbout": "Como você soube do Worklenz?",
+  "howHeardAbout": "Como você soube do PlenejaGov?",
   "howHeardAboutGoogleSearch": "Busca no Google",
   "howHeardAboutTwitter": "Twitter",
   "howHeardAboutLinkedin": "LinkedIn",

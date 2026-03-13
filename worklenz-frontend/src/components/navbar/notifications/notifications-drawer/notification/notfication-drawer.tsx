@@ -82,7 +82,7 @@ const NotificationDrawer = () => {
     dispatch(fetchInvitations());
 
     if (isPushEnabled()) {
-      const title = notification.team ? `${notification.team} | Worklenz` : 'Worklenz';
+      const title = notification.team ? `${notification.team} | PlenejaGov` : 'PlenejaGov';
       let url = notification.url;
       if (url && notification.params && Object.keys(notification.params).length) {
         const q = toQueryString(notification.params);
@@ -107,7 +107,7 @@ const NotificationDrawer = () => {
     if (isPushEnabled()) {
       createPush(
         notification.message,
-        notification.team || 'Worklenz',
+        notification.team || 'PlenejaGov',
         notification.team_id || null
       );
     }

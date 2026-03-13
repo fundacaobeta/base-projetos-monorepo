@@ -26,5 +26,8 @@
   "noDueDate": "Sem data de vencimento",
   "save": "Salvar",
   "clear": "Limpar",
-  "nextWeek": "Próxima semana"
+  "nextWeek": "Próxima semana",
+  "noSubtasks": "Sem subtarefas",
+  "showSubtasks": "Mostrar subtarefas",
+  "hideSubtasks": "Ocultar subtarefas"
 }

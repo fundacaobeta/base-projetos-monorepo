@@ -911,7 +911,7 @@ export default class TeamMembersController extends WorklenzControllerBase {
     const teamMembers = await this.getTeamMemberInsightData(req.user?.team_id, start || null, end, project, status, searchQuery, sortField as string, sortOrder, size, offset, req.query.all as string);
 
     const exportDate = moment().format("MMM-DD-YYYY");
-    const fileName = `Worklenz - Team Members Export - ${exportDate}`;
+    const fileName = `PlenejaGov - Exportação de Membros da Equipe - ${exportDate}`;
     const metadata = {};
     const title = "";
 

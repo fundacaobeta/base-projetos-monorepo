@@ -82,7 +82,7 @@ async function handleSignUp(req: Request, email: string, password: string, done:
     // if error.message is "email already exists" then it should have the email address in the error message after ":".
     if (message.includes("EMAIL_EXISTS_ERROR") || error.constraint === "users_google_id_uindex") {
       const [, value] = error.message.split(":");
-      return done(null, null, req.flash(ERROR_KEY, `Worklenz account already exists for email ${value}.`));
+      return done(null, null, req.flash(ERROR_KEY, `Conta PlenejaGov já existe para o e-mail ${value}.`));
     }
 
 

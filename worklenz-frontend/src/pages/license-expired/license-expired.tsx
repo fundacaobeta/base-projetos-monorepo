@@ -10,9 +10,9 @@ const LicenseExpired = () => {
   const authService = useAuthService();
 
   // Direct fallback content in case of translation issues
-  const fallbackTitle = 'Your Worklenz trial has expired!';
-  const fallbackSubtitle = 'Please upgrade now.';
-  const fallbackButton = 'Upgrade now';
+  const fallbackTitle = 'Seu período de teste do PlenejaGov expirou!';
+  const fallbackSubtitle = 'Por favor, atualize agora.';
+  const fallbackButton = 'Atualizar agora';
 
   return (
     <div

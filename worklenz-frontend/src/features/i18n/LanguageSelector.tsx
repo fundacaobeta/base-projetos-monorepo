@@ -1,4 +1,4 @@
-import { Button, Dropdown } from '@/shared/antd-imports';
+import { Button } from '@/shared/antd-imports';
 import { useAppSelector } from '@/hooks/useAppSelector';
 import { useAppDispatch } from '@/hooks/useAppDispatch';
 import { ILanguageType, setLanguage } from './localesSlice';
@@ -11,51 +11,33 @@ const LanguageSelector = () => {
     dispatch(setLanguage(lang));
   };
 
-  const items = [
-    { key: 'en', label: 'English' },
-    { key: 'es', label: 'Español' },
-    { key: 'pt', label: 'Português' },
-    { key: 'alb', label: 'Shqip' },
-    { key: 'de', label: 'Deutsch' },
-    { key: 'zh_cn', label: '简体中文' },
-  ];
-
   const languageLabels = {
-    en: 'En',
-    es: 'Es',
-    pt: 'Pt',
-    alb: 'Sq',
-    de: 'de',
-    zh_cn: 'zh_cn',
+    en: 'PT',
+    es: 'PT',
+    pt: 'PT',
+    alb: 'PT',
+    de: 'PT',
+    zh_cn: 'PT',
+    ko: 'PT',
   };
 
   return (
-    <Dropdown
-      menu={{
-        items: items.map(item => ({
-          ...item,
-          onClick: () => handleLanguageChange(item.key as ILanguageType),
-        })),
+    <Button
+      shape="circle"
+      onClick={() => handleLanguageChange('pt' as ILanguageType)}
+      style={{
+        textTransform: 'capitalize',
+        fontWeight: 500,
+        minWidth: '40px',
+        height: '40px',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
       }}
-      placement="bottom"
-      trigger={['click']}
+      aria-label="Idioma do aplicativo em português"
     >
-      <Button
-        shape="circle"
-        style={{
-          textTransform: 'capitalize',
-          fontWeight: 500,
-          minWidth: '40px',
-          height: '40px',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-        }}
-        aria-label="Change language"
-      >
-        {languageLabels[language]}
-      </Button>
-    </Dropdown>
+      {languageLabels[language]}
+    </Button>
   );
 };
 

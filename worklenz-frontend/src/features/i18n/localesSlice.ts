@@ -19,16 +19,8 @@ type LocalesState = {
 
 const STORAGE_KEY = 'i18nextLng';
 
-/**
- * Gets the user's browser language and returns it if supported, otherwise returns English
- * @returns The detected supported language or English as fallback
- */
 const getDefaultLanguage = (): ILanguageType => {
-  const browserLang = navigator.language.split('-')[0];
-  if (Object.values(Language).includes(browserLang as Language)) {
-    return browserLang as ILanguageType;
-  }
-  return Language.EN;
+  return Language.PT;
 };
 
 const DEFAULT_LANGUAGE: ILanguageType = getDefaultLanguage();
@@ -62,7 +54,7 @@ const localesSlice = createSlice({
   initialState,
   reducers: {
     toggleLng: state => {
-      const newLang: ILanguageType = state.lng === Language.EN ? Language.ES : Language.EN;
+      const newLang: ILanguageType = Language.PT;
       state.lng = newLang;
       saveLanguageInLocalStorage(newLang);
       i18n.changeLanguage(newLang);

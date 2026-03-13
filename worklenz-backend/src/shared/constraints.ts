@@ -16,7 +16,7 @@ export const DB_CONSTRAINS: { [x: string]: string | null } = {
   task_priorities_name_uindex: "",
   clients_name_team_id_uindex: "Client name already exists. Please choose a different name.",
   job_titles_name_team_id_uindex: "Job title already exists. Please choose a different name.",
-  users_email_uindex: "A Worklenz account already exists for this email address. Please choose a different email.",
+  users_email_uindex: "Uma conta PlenejaGov já existe para este endereço de e-mail. Por favor, escolha um e-mail diferente.",
   users_google_id_uindex: "",
   users_socket_id_uindex: "",
   team_members_user_id_team_id_uindex: "Team member with this email already exists.",

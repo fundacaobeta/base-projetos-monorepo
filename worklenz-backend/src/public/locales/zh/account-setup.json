@@ -1,8 +1,8 @@
 {
   "continue": "继续",
-  "setupYourAccount": "设置您的Worklenz账户。",
+  "setupYourAccount": "设置您的PlanejaGov账户。",
   "organizationStepTitle": "命名您的组织",
-  "organizationStepLabel": "为您的Worklenz账户选择一个名称。",
+  "organizationStepLabel": "为您的PlanejaGov账户选择一个名称。",
   "projectStepTitle": "创建您的第一个项目",
   "projectStepLabel": "您现在正在做什么项目？",
   "projectStepPlaceholder": "例如：营销计划",

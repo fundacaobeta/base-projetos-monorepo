@@ -23,7 +23,11 @@
   "transactionDate": "Data da Transação",
   "paymentMethod": "Método de Pagamento",
   "status": "Status",
-  "ltdUsers": "Puedes agregar hasta {{ltd_users}} usuarios.",
+  "ltdUsers": "Você pode adicionar até {{ltd_users}} usuários.",
+
+  "totalSeats": "Total de assentos",
+  "availableSeats": "Assentos disponíveis",
+  "addMoreSeats": "Adicionar mais assentos",
 
   "drawerTitle": "Resgatar Código",
   "label": "Resgatar Código",
@@ -109,5 +113,8 @@
   "currentSeatsText": "Atualmente você tem {{seats}} assentos disponíveis.",
   "selectSeatsText": "Selecione o número de assentos adicionais para comprar.",
   "purchase": "Comprar",
-  "contactSales": "Fale com vendas"
+  "contactSales": "Fale com vendas",
+
+  "continueWith": "Continuar com {{plan}}",
+  "changeToPlan": "Mudar para {{plan}}"
 }

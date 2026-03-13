@@ -1,15 +1,15 @@
-# Node-pg-migrate Setup for Worklenz
+# Configuração do Node-pg-migrate para PlenejaGov
 
-## Installation
+## Instalação
 
 ```bash
 npm install --save node-pg-migrate
 npm install --save-dev @types/node-pg-migrate
 ```
 
-## Configuration
+## Configuração
 
-### 1. Add to package.json scripts:
+### 1. Adicionar ao package.json scripts:
 
 ```json
 {
@@ -23,7 +23,7 @@ npm install --save-dev @types/node-pg-migrate
 }
 ```
 
-### 2. Create migration config (.pgmrc or migrations/config.js):
+### 2. Criar configuração de migração (.pgmrc ou migrations/config.js):
 
 ```javascript
 // migrations/config.js
@@ -47,22 +47,22 @@ module.exports = {
 };
 ```
 
-## Migration Structure
+## Estrutura de Migração
 
-### Initial Migration Plan (Convert existing SQL files):
+### Plano de Migração Inicial (Converter arquivos SQL existentes):
 
-1. **001_extensions.ts** - Enable required extensions
-2. **002_domains_and_types.ts** - Create custom domains and enum types
-3. **003_core_tables.ts** - User, organization, and authentication tables
-4. **004_project_tables.ts** - Project management tables
-5. **005_task_tables.ts** - Task management tables
-6. **006_indexes.ts** - Create all indexes
-7. **007_functions.ts** - Stored procedures and functions
-8. **008_triggers.ts** - Database triggers
-9. **009_views.ts** - Database views
-10. **010_initial_data.ts** - Seed data
+1. **001_extensions.ts** - Habilitar extensões necessárias
+2. **002_domains_and_types.ts** - Criar domínios e tipos enum customizados
+3. **003_core_tables.ts** - Tabelas de usuário, organização e autenticação
+4. **004_project_tables.ts** - Tabelas de gerenciamento de projetos
+5. **005_task_tables.ts** - Tabelas de gerenciamento de tarefas
+6. **006_indexes.ts** - Criar todos os índices
+7. **007_functions.ts** - Procedimentos armazenados e funções
+8. **008_triggers.ts** - Triggers do banco de dados
+9. **009_views.ts** - Views do banco de dados
+10. **010_initial_data.ts** - Dados iniciais
 
-### Example Migration File:
+### Exemplo de Arquivo de Migração:
 
 ```typescript
 // migrations/001_extensions.ts
@@ -79,22 +79,22 @@ export async function down(pgm: MigrationBuilder): Promise<void> {
 }
 ```
 
-### Complex Migration Example (Tables with relations):
+### Exemplo de Migração Complexa (Tabelas com relações):
 
 ```typescript
 // migrations/003_core_tables.ts
 import { MigrationBuilder } from 'node-pg-migrate';
 
 export async function up(pgm: MigrationBuilder): Promise<void> {
-  // Create custom domain
+  // Criar domínio customizado
   pgm.createDomain('wl_email', 'text', {
     check: "value ~* '^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$'"
   });
 
-  // Create enum type
+  // Criar tipo enum
   pgm.createType('language_type', ['en', 'es', 'pt', 'alb', 'de', 'zh_cn', 'ko']);
 
-  // Create users table
+  // Criar tabela de usuários
   pgm.createTable('users', {
     id: {
       type: 'uuid',
@@ -125,7 +125,7 @@ export async function up(pgm: MigrationBuilder): Promise<void> {
     }
   });
 
-  // Create index
+  // Criar índices
   pgm.createIndex('users', 'email');
   pgm.createIndex('users', 'created_at');
 }
@@ -137,70 +137,70 @@ export async function down(pgm: MigrationBuilder): Promise<void> {
 }
 ```
 
-## Benefits for Worklenz
+## Benefícios para o PlenejaGov
 
-1. **Incremental Updates**: New features can be added as new migrations
-2. **Team Collaboration**: Developers can see exactly what DB changes were made
-3. **CI/CD Integration**: Migrations can run automatically in deployment pipelines
-4. **Development Safety**: Rollback capabilities for development environments
-5. **Migration History**: Clear audit trail of all database changes
+1. **Atualizações Incrementais**: Novas funcionalidades podem ser adicionadas como novas migrações
+2. **Colaboração em Equipe**: Desenvolvedores podem ver exatamente quais mudanças de BD foram feitas
+3. **Integração CI/CD**: Migrações podem ser executadas automaticamente nos pipelines de implantação
+4. **Segurança no Desenvolvimento**: Capacidades de rollback para ambientes de desenvolvimento
+5. **Histórico de Migrações**: Trilha de auditoria clara de todas as mudanças do banco de dados
 
-## Migration Commands
+## Comandos de Migração
 
 ```bash
-# Create a new migration
-npm run migrate:create my_new_feature
+# Criar uma nova migração
+npm run migrate:create minha_nova_funcionalidade
 
-# Run all pending migrations
+# Executar todas as migrações pendentes
 npm run migrate:up
 
-# Rollback last migration
+# Reverter a última migração
 npm run migrate:down
 
-# Rollback and re-run last migration
+# Reverter e re-executar a última migração
 npm run migrate:redo
 
-# Run migrations up to specific version
+# Executar migrações até uma versão específica
 npm run migrate:up 3
 
-# Check migration status
+# Verificar status das migrações
 npm run migrate -- status
 ```
 
-## Transition Strategy
+## Estratégia de Transição
 
-### Phase 1: Setup (Week 1)
-1. Install node-pg-migrate
-2. Create migration config
-3. Test connection and setup
+### Fase 1: Configuração (Semana 1)
+1. Instalar node-pg-migrate
+2. Criar configuração de migração
+3. Testar conexão e configuração
 
-### Phase 2: Convert Existing Schema (Week 2-3)
-1. Create baseline migration from current schema
-2. Split large SQL files into logical migrations
-3. Test migrations on fresh database
+### Fase 2: Converter Schema Existente (Semanas 2-3)
+1. Criar migração base do schema atual
+2. Dividir arquivos SQL grandes em migrações lógicas
+3. Testar migrações em banco de dados limpo
 
-### Phase 3: Validation (Week 4)
-1. Compare migrated schema with original
-2. Run application tests
-3. Document any differences
+### Fase 3: Validação (Semana 4)
+1. Comparar schema migrado com o original
+2. Executar testes da aplicação
+3. Documentar quaisquer diferenças
 
-### Phase 4: Team Training & Rollout
-1. Update documentation
-2. Train team on migration workflow
-3. Update CI/CD pipelines
+### Fase 4: Treinamento da Equipe e Lançamento
+1. Atualizar documentação
+2. Treinar equipe no fluxo de trabalho de migração
+3. Atualizar pipelines CI/CD
 
-## Best Practices
+## Boas Práticas
 
-1. **Small, Focused Migrations**: Each migration should do one thing
-2. **Always Include Down**: Make migrations reversible
-3. **Test Migrations**: Run up and down in development before committing
-4. **No Data Modifications in Schema Migrations**: Separate schema and data migrations
-5. **Use Transactions**: Wrap migrations in transactions when possible
-6. **Version Control**: Commit migrations with related code changes
+1. **Migrações Pequenas e Focadas**: Cada migração deve fazer uma coisa
+2. **Sempre Incluir Down**: Tornar as migrações reversíveis
+3. **Testar Migrações**: Executar up e down no desenvolvimento antes de commitar
+4. **Sem Modificações de Dados em Migrações de Schema**: Separar migrações de schema e dados
+5. **Usar Transações**: Envolver migrações em transações quando possível
+6. **Controle de Versão**: Commitar migrações com mudanças de código relacionadas
 
-## Handling Large Functions/Procedures
+## Tratando Funções/Procedimentos Grandes
 
-For the 269KB functions file, consider:
+Para o arquivo de funções de 269KB, considere:
 
 ```typescript
 // migrations/007_functions.ts
@@ -209,10 +209,10 @@ import * as fs from 'fs';
 import * as path from 'path';
 
 export async function up(pgm: MigrationBuilder): Promise<void> {
-  // Read function definitions from separate SQL files
+  // Ler definições de função de arquivos SQL separados
   const functionsDir = path.join(__dirname, 'sql', 'functions');
   const files = fs.readdirSync(functionsDir).sort();
-  
+
   for (const file of files) {
     const sql = fs.readFileSync(path.join(functionsDir, file), 'utf8');
     pgm.sql(sql);
@@ -220,33 +220,33 @@ export async function up(pgm: MigrationBuilder): Promise<void> {
 }
 
 export async function down(pgm: MigrationBuilder): Promise<void> {
-  // Drop functions in reverse order
-  // Or maintain a list of function names to drop
+  // Remover funções em ordem inversa
+  // Ou manter uma lista de nomes de funções para remover
 }
 ```
 
-## Considerations
+## Considerações
 
-### Pros:
-- Professional migration management
-- Better for teams and production
-- Supports complex deployment scenarios
-- Industry standard approach
+### Prós:
+- Gerenciamento profissional de migrações
+- Melhor para equipes e produção
+- Suporta cenários complexos de implantação
+- Abordagem padrão da indústria
 
-### Cons:
-- Initial setup effort required
-- Team learning curve
-- Need to convert existing SQL files
-- More complex than raw SQL for simple schemas
+### Contras:
+- Esforço inicial de configuração necessário
+- Curva de aprendizado da equipe
+- Necessidade de converter arquivos SQL existentes
+- Mais complexo que SQL puro para schemas simples
 
-## Recommendation
+## Recomendação
 
-Given Worklenz's complexity (100+ tables, 269KB of functions, multiple developers), implementing node-pg-migrate would provide:
+Dada a complexidade do PlenejaGov (100+ tabelas, 269KB de funções, múltiplos desenvolvedores), implementar o node-pg-migrate forneceria:
 
-1. **Better maintainability** for the growing schema
-2. **Safer deployments** with rollback capabilities
-3. **Clear change history** for debugging
-4. **Easier onboarding** for new developers
-5. **Professional-grade** database management
+1. **Melhor manutenibilidade** para o schema em crescimento
+2. **Implantações mais seguras** com capacidades de rollback
+3. **Histórico de mudanças claro** para depuração
+4. **Integração mais fácil** para novos desenvolvedores
+5. **Gerenciamento de banco de dados** de nível profissional
 
-The initial investment in setup will pay dividends as the application grows and the team expands.
+O investimento inicial em configuração trará dividendos à medida que a aplicação cresce e a equipe se expande.

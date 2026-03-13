@@ -115,14 +115,14 @@ router.get("/task-moved-to-done", (req: IWorkLenzRequest, res: IWorkLenzResponse
 router.get("/project-daily-digest", (req: IWorkLenzRequest, res: IWorkLenzResponse) => {
   const sampleData: IProjectDigest = {
     id: "",
-    name: "Worklenz",
+    name: "PlenejaGov",
     team_name: "Ceydigital",
     greeting: `Hi Dinindu`,
     due_tomorrow: [],
     settings_url: "/",
     project_url: "/",
     subscribers: [],
-    summary: `Here's the "Worklenz" summary | Ceydigital`,
+    summary: `Here's the "PlenejaGov" summary | Ceydigital`,
     today_completed: [
       {
         id: "abc123",
@@ -141,7 +141,7 @@ router.get("/task-comment", (req: IWorkLenzRequest, res: IWorkLenzResponse) => {
     greeting: "Hi Dinindu",
     summary: `"Dinindu Office" added a new comment on "Email Notifications"`,
     team: "Ceydigital",
-    project_name: "Worklenz",
+    project_name: "PlenejaGov",
     comment: "Any updates on this?",
     task: "Email Notifications",
     settings_url: "/",

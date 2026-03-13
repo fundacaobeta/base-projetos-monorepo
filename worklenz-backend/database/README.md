@@ -1,36 +1,36 @@
-All database DDLs, DMLs and migrations relates to the application should be stored here as well.
+Todos os DDLs, DMLs e migrações de banco de dados relacionados à aplicação devem ser armazenados aqui.
 
-# Worklenz Database
+# Banco de Dados PlenejaGov
 
-## Directory Structure
+## Estrutura de Diretórios
 
-- `sql/` - Contains all SQL files needed for database initialization
-- `migrations/` - Contains database migration scripts
-- `00-init-db.sh` - Initialization script that executes SQL files in the correct order
+- `sql/` - Contém todos os arquivos SQL necessários para inicialização do banco de dados
+- `migrations/` - Contém scripts de migração do banco de dados
+- `00-init-db.sh` - Script de inicialização que executa os arquivos SQL na ordem correta
 
-## SQL File Execution Order
+## Ordem de Execução dos Arquivos SQL
 
-The database initialization files should be executed in the following order:
+Os arquivos de inicialização do banco de dados devem ser executados na seguinte ordem:
 
-1. `sql/0_extensions.sql` - PostgreSQL extensions
-2. `sql/1_tables.sql` - Table definitions and constraints
-3. `sql/indexes.sql` - All database indexes 
-4. `sql/4_functions.sql` - Database functions
-5. `sql/triggers.sql` - Database triggers
-6. `sql/3_views.sql` - Database views
-7. `sql/2_dml.sql` - Data Manipulation Language statements (inserts, updates)
-8. `sql/5_database_user.sql` - Database user setup
+1. `sql/0_extensions.sql` - Extensões PostgreSQL
+2. `sql/1_tables.sql` - Definições de tabelas e restrições
+3. `sql/indexes.sql` - Todos os índices do banco de dados
+4. `sql/4_functions.sql` - Funções do banco de dados
+5. `sql/triggers.sql` - Triggers do banco de dados
+6. `sql/3_views.sql` - Views do banco de dados
+7. `sql/2_dml.sql` - Instruções de Linguagem de Manipulação de Dados (inserções, atualizações)
+8. `sql/5_database_user.sql` - Configuração do usuário do banco de dados
 
-## Docker-based Setup
+## Configuração Baseada em Docker
 
-In the Docker environment, we use a shell script called `00-init-db.sh` to control the SQL file execution order:
+No ambiente Docker, usamos um script shell chamado `00-init-db.sh` para controlar a ordem de execução dos arquivos SQL:
 
-1. The shell script creates a `sql/` subdirectory if it doesn't exist
-2. It copies all .sql files into this subdirectory
-3. It executes the SQL files from the subdirectory in the correct order
+1. O script shell cria um subdiretório `sql/` se ele não existir
+2. Ele copia todos os arquivos .sql para este subdiretório
+3. Executa os arquivos SQL do subdiretório na ordem correta
 
-This approach prevents the SQL files from being executed twice by Docker's automatic initialization mechanism, which would cause errors for objects that already exist.
+Esta abordagem evita que os arquivos SQL sejam executados duas vezes pelo mecanismo de inicialização automática do Docker, o que causaria erros para objetos que já existem.
 
-## Manual Setup
+## Configuração Manual
 
-If you're setting up the database manually, please follow the execution order listed above. Ensure your SQL files are in the `sql/` subdirectory before executing the script.
+Se estiver configurando o banco de dados manualmente, siga a ordem de execução listada acima. Certifique-se de que seus arquivos SQL estejam no subdiretório `sql/` antes de executar o script.

@@ -1,117 +1,117 @@
-# Docker Setup Guide - Production-Ready Worklenz
+# Guia de Configuração Docker - PlenejaGov Pronto para Produção
 
-This repository now includes a **production-ready Docker setup** with enterprise-grade features including nginx reverse proxy, SSL/TLS support, Redis caching, automated backups, and comprehensive management scripts.
+Este repositório inclui uma **configuração Docker pronta para produção** com recursos de nível empresarial, incluindo proxy reverso nginx, suporte SSL/TLS, cache Redis, backups automatizados e scripts de gerenciamento abrangentes.
 
-## 🚀 Quick Start
+## Início Rápido
 
-### Option 1: Automated Setup (Recommended)
+### Opção 1: Configuração Automatizada (Recomendado)
 ```bash
 ./quick-setup.sh
 ```
-- Install and start Worklenz
+- Instala e inicia o PlenejaGov
 
-During the process, you will be prompted for:
-1. **Domain**: Enter `localhost` for local testing. For production, enter your server's domain.
-2. **Build and push images**: Answer `no` (recommended) to use pre-built images from Docker Hub, which is much faster. Answer `yes` only if you want to build custom images.
-3. **Docker Hub username**: If you chose to build custom images, enter your Docker Hub username. This is used to tag and push the images to your own repository.
+Durante o processo, você será solicitado a fornecer:
+1. **Domínio**: Digite `localhost` para testes locais. Para produção, digite o domínio do seu servidor.
+2. **Build e push de imagens**: Responda `no` (recomendado) para usar imagens pré-construídas do Docker Hub, o que é muito mais rápido. Responda `yes` somente se quiser construir imagens personalizadas.
+3. **Nome de usuário do Docker Hub**: Se escolheu construir imagens personalizadas, digite seu nome de usuário do Docker Hub. Isso é usado para marcar e enviar as imagens para seu próprio repositório.
 
-### Option 2: Manual Setup
+### Opção 2: Configuração Manual
 ```bash
-# 1. Copy environment file
+# 1. Copiar arquivo de ambiente
 cp .env.example .env
 
-# 2. Edit .env and set required values:
+# 2. Editar .env e definir os valores obrigatórios:
 #    - DB_PASSWORD
-#    - SESSION_SECRET (generate with: openssl rand -hex 32)
-#    - COOKIE_SECRET (generate with: openssl rand -hex 32)
-#    - JWT_SECRET (generate with: openssl rand -hex 32)
-#    - AWS_SECRET_ACCESS_KEY (MinIO password)
+#    - SESSION_SECRET (gerar com: openssl rand -hex 32)
+#    - COOKIE_SECRET (gerar com: openssl rand -hex 32)
+#    - JWT_SECRET (gerar com: openssl rand -hex 32)
+#    - AWS_SECRET_ACCESS_KEY (senha do MinIO)
 #    - REDIS_PASSWORD
 
-# 3. Start services (Express mode - includes PostgreSQL, Redis, MinIO)
+# 3. Iniciar serviços (modo Express - inclui PostgreSQL, Redis, MinIO)
 docker compose --profile express up -d
 
-# 4. For production with SSL
+# 4. Para produção com SSL
 docker compose --profile express --profile ssl up -d
 ```
 
-## 📋 What's New
+## O que há de Novo
 
-### 1. **Production-Ready Docker Compose**
-- **Nginx reverse proxy** with SSL/TLS termination
-- **Redis cache** for session management
-- **Automated database backups** with retention policies
-- **Health checks** for all services
-- **Network isolation** (separate backend/frontend networks)
-- **Security hardening** (non-root users, no-new-privileges)
-- **Profile-based deployment** (express/advanced modes)
+### 1. **Docker Compose Pronto para Produção**
+- **Proxy reverso Nginx** com terminação SSL/TLS
+- **Cache Redis** para gerenciamento de sessão
+- **Backups automáticos do banco de dados** com políticas de retenção
+- **Verificações de saúde** para todos os serviços
+- **Isolamento de rede** (redes separadas de backend/frontend)
+- **Endurecimento de segurança** (usuários não-root, no-new-privileges)
+- **Implantação baseada em perfis** (modos express/avançado)
 
-### 2. **Enhanced Dockerfiles**
+### 2. **Dockerfiles Aprimorados**
 
-#### Backend Dockerfile
-- Multi-stage build for smaller images
-- Non-root user (`worklenz`) for security
-- `tini` init system for proper signal handling
-- Health check endpoint
-- `libvips42` for image processing
-- Proper log directory with permissions
+#### Dockerfile do Backend
+- Build multi-estágio para imagens menores
+- Usuário não-root (`worklenz`) para segurança
+- Sistema init `tini` para tratamento adequado de sinais
+- Endpoint de verificação de saúde
+- `libvips42` para processamento de imagens
+- Diretório de log adequado com permissões
 
-#### Frontend Dockerfile
-- Multi-stage build with Alpine Linux
-- Non-root user for security
-- Runtime environment injection (supports reCAPTCHA, Google Login, etc.)
-- `tini` init system
-- Health check endpoint
-- Optimized `serve` configuration
+#### Dockerfile do Frontend
+- Build multi-estágio com Alpine Linux
+- Usuário não-root para segurança
+- Injeção de ambiente em tempo de execução (suporta reCAPTCHA, Login Google, etc.)
+- Sistema init `tini`
+- Endpoint de verificação de saúde
+- Configuração `serve` otimizada
 
-### 3. **Nginx Configuration**
-- **SSL/TLS support** (Let's Encrypt + self-signed)
-- **Rate limiting** (API and login endpoints)
-- **WebSocket support** for Socket.IO
-- **Security headers** (HSTS, CSP, X-Frame-Options, etc.)
-- **Gzip compression**
-- **Static asset caching**
-- **Upstream load balancing**
+### 3. **Configuração Nginx**
+- **Suporte SSL/TLS** (Let's Encrypt + autoassinado)
+- **Limitação de taxa** (endpoints de API e login)
+- **Suporte WebSocket** para Socket.IO
+- **Cabeçalhos de segurança** (HSTS, CSP, X-Frame-Options, etc.)
+- **Compressão Gzip**
+- **Cache de assets estáticos**
+- **Balanceamento de carga upstream**
 
-### 4. **Database Initialization**
-- **Backup restoration** on startup
-- **Migration tracking** system
-- **Proper error handling**
-- **Initialization marker** to prevent re-runs
+### 4. **Inicialização do Banco de Dados**
+- **Restauração de backup** na inicialização
+- Sistema de **rastreamento de migração**
+- **Tratamento adequado de erros**
+- **Marcador de inicialização** para evitar re-execuções
 
-### 5. **Management Scripts**
+### 5. **Scripts de Gerenciamento**
 
-#### `manage.sh` - Comprehensive Management
+#### `manage.sh` - Gerenciamento Abrangente
 ```bash
-./manage.sh [command]
+./manage.sh [comando]
 
-Commands:
-  install          Install Worklenz (auto-generates secrets)
-  start            Start all services
-  stop             Stop all services
-  restart          Restart all services
-  status           Show service status
-  logs             View service logs
-  backup           Create database backup
-  restore          Restore from backup
-  upgrade          Upgrade to latest version
-  configure        Interactive configuration
-  auto-configure   Auto-configure from .env DOMAIN
-  ssl              Manage SSL certificates
-  build            Build Docker images locally
-  push             Push images to Docker Hub
-  build-push       Build and push in one step
+Comandos:
+  install          Instalar o PlenejaGov (gera segredos automaticamente)
+  start            Iniciar todos os serviços
+  stop             Parar todos os serviços
+  restart          Reiniciar todos os serviços
+  status           Mostrar status dos serviços
+  logs             Ver logs dos serviços
+  backup           Criar backup do banco de dados
+  restore          Restaurar a partir de backup
+  upgrade          Atualizar para a versão mais recente
+  configure        Configuração interativa
+  auto-configure   Configuração automática a partir do DOMAIN no .env
+  ssl              Gerenciar certificados SSL
+  build            Construir imagens Docker localmente
+  push             Enviar imagens para o Docker Hub
+  build-push       Construir e enviar em uma etapa
 ```
 
-#### `quick-setup.sh` - Automated Installation
-One-command setup with auto-generated secrets and SSL configuration.
+#### `quick-setup.sh` - Instalação Automatizada
+Configuração em um comando com segredos gerados automaticamente e configuração SSL.
 
-## 🏗️ Architecture
+## Arquitetura
 
 ```
 ┌─────────────────────────────────────────────────────────┐
-│                    Nginx (Port 80/443)                  │
-│              SSL/TLS, Rate Limiting, Caching            │
+│                    Nginx (Porta 80/443)                 │
+│              SSL/TLS, Limitação de Taxa, Cache          │
 └────────────────────┬────────────────────────────────────┘
                      │
         ┌────────────┴────────────┐
@@ -119,272 +119,272 @@ One-command setup with auto-generated secrets and SSL configuration.
 ┌───────▼────────┐       ┌───────▼────────┐
 │   Frontend     │       │    Backend     │
 │  (Node:22)     │       │   (Node:20)    │
-│  Port: 5000    │       │   Port: 3000   │
+│  Porta: 5000   │       │   Porta: 3000  │
 └────────────────┘       └───────┬────────┘
                                  │
                     ┌────────────┼────────────┐
                     │            │            │
             ┌───────▼──┐   ┌────▼────┐  ┌───▼────┐
             │PostgreSQL│   │  Redis  │  │ MinIO  │
-            │  Port:   │   │ Port:   │  │ Port:  │
+            │  Porta:  │   │ Porta:  │  │ Porta: │
             │  5432    │   │  6379   │  │ 9000   │
             └──────────┘   └─────────┘  └────────┘
 ```
 
-## 🔧 Configuration
+## Configuração
 
-### Deployment Modes
+### Modos de Implantação
 
-#### Express Mode (Default)
-All services bundled together - PostgreSQL, Redis, MinIO included.
+#### Modo Express (Padrão)
+Todos os serviços incluídos - PostgreSQL, Redis, MinIO integrados.
 ```bash
 docker compose --profile express up -d
 ```
 
-#### Advanced Mode
-Use external services (AWS S3, Azure Blob, external PostgreSQL).
+#### Modo Avançado
+Use serviços externos (AWS S3, Azure Blob, PostgreSQL externo).
 ```bash
-# Set in .env:
+# Definir em .env:
 DEPLOYMENT_MODE=advanced
-STORAGE_PROVIDER=s3  # or azure
+STORAGE_PROVIDER=s3  # ou azure
 
 docker compose up -d
 ```
 
-### Environment Variables
+### Variáveis de Ambiente
 
-Key variables in `.env`:
-- `DOMAIN` - Your domain (localhost for local testing)
-- `DEPLOYMENT_MODE` - express or advanced
-- `STORAGE_PROVIDER` - s3 or azure
+Variáveis principais no `.env`:
+- `DOMAIN` - Seu domínio (localhost para testes locais)
+- `DEPLOYMENT_MODE` - express ou advanced
+- `STORAGE_PROVIDER` - s3 ou azure
 - `ENABLE_SSL` - true/false
-- `BACKUP_RETENTION_DAYS` - Days to keep backups (default: 30)
+- `BACKUP_RETENTION_DAYS` - Dias para manter backups (padrão: 30)
 
-See `.env.example` for complete documentation.
+Consulte `.env.example` para documentação completa.
 
-## 🔐 Security Features
+## Recursos de Segurança
 
-1. **Non-root containers** - All services run as non-root users
-2. **Security options** - `no-new-privileges` enabled
-3. **Network isolation** - Backend network is internal-only
-4. **SSL/TLS** - Let's Encrypt for production, self-signed for localhost
-5. **Rate limiting** - API and login endpoints protected
-6. **Security headers** - HSTS, CSP, X-Frame-Options, etc.
-7. **Secret management** - Auto-generated secure secrets
+1. **Contêineres não-root** - Todos os serviços executam como usuários não-root
+2. **Opções de segurança** - `no-new-privileges` habilitado
+3. **Isolamento de rede** - Rede do backend é interna
+4. **SSL/TLS** - Let's Encrypt para produção, autoassinado para localhost
+5. **Limitação de taxa** - Endpoints de API e login protegidos
+6. **Cabeçalhos de segurança** - HSTS, CSP, X-Frame-Options, etc.
+7. **Gerenciamento de segredos** - Segredos seguros gerados automaticamente
 
-## 💾 Backup & Restore
+## Backup e Restauração
 
-### Automated Backups
-Database backups run automatically every 24 hours with configurable retention:
+### Backups Automáticos
+Backups do banco de dados são executados automaticamente a cada 24 horas com retenção configurável:
 ```bash
-# Enable backup service
+# Habilitar serviço de backup
 docker compose --profile backup up -d
 ```
 
-### Manual Backup
+### Backup Manual
 ```bash
 ./manage.sh backup
 ```
 
-### Restore from Backup
+### Restaurar a partir de Backup
 ```bash
 ./manage.sh restore
 ```
 
-Backups are stored in `./backups/` directory and compressed with gzip.
+Os backups são armazenados no diretório `./backups/` e comprimidos com gzip.
 
-## 🌐 SSL/TLS Setup
+## Configuração SSL/TLS
 
-### Localhost (Self-Signed)
-Automatically configured for localhost testing.
+### Localhost (Autoassinado)
+Configurado automaticamente para testes em localhost.
 
-### Production Domain (Let's Encrypt)
+### Domínio de Produção (Let's Encrypt)
 ```bash
-# 1. Set domain in .env
-DOMAIN=your-domain.com
+# 1. Definir domínio em .env
+DOMAIN=seu-dominio.com
 ENABLE_SSL=true
-LETSENCRYPT_EMAIL=your-email@domain.com
+LETSENCRYPT_EMAIL=seu-email@dominio.com
 
-# 2. Point DNS A record to your server IP
+# 2. Apontar registro DNS A para o IP do seu servidor
 
-# 3. Start with SSL profile
+# 3. Iniciar com perfil SSL
 docker compose --profile express --profile ssl up -d
 ```
 
-Or use the management script:
+Ou use o script de gerenciamento:
 ```bash
 ./manage.sh ssl
 ```
 
-## 📊 Monitoring
+## Monitoramento
 
-### View Service Status
+### Ver Status dos Serviços
 ```bash
 ./manage.sh status
-# or
+# ou
 docker compose ps
 ```
 
-### View Logs
+### Ver Logs
 ```bash
 ./manage.sh logs
-# or
-docker compose logs -f [service-name]
+# ou
+docker compose logs -f [nome-do-servico]
 ```
 
-### Health Checks
-All services include health checks:
+### Verificações de Saúde
+Todos os serviços incluem verificações de saúde:
 - Backend: `http://localhost:3000/public/health`
 - Frontend: `http://localhost:5000`
 - PostgreSQL: `pg_isready`
 - Redis: `redis-cli ping`
 - MinIO: `/minio/health/live`
 
-## 🔄 Upgrading
+## Atualização
 
 ```bash
 ./manage.sh upgrade
 ```
 
-This will:
-1. Create a backup
-2. Pull latest images
-3. Rebuild containers
-4. Restart services
+Isso irá:
+1. Criar um backup
+2. Baixar as imagens mais recentes
+3. Reconstruir os contêineres
+4. Reiniciar os serviços
 
-## 🐳 Building Custom Images
+## Construindo Imagens Personalizadas
 
-### Build Locally
+### Construir Localmente
 ```bash
 ./manage.sh build
 ```
 
-### Push to Docker Hub
+### Enviar para o Docker Hub
 ```bash
 ./manage.sh push
 ```
 
-### Build and Push
+### Construir e Enviar
 ```bash
 ./manage.sh build-push
 ```
 
-## 📁 Directory Structure
+## Estrutura de Diretórios
 
 ```
 worklenz/
-├── docker-compose.yaml          # Main compose file
-├── .env.example                 # Environment template
-├── manage.sh                    # Management script
-├── quick-setup.sh              # Quick setup script
-├── nginx/                      # Nginx configuration
+├── docker-compose.yaml          # Arquivo compose principal
+├── .env.example                 # Template de ambiente
+├── manage.sh                    # Script de gerenciamento
+├── quick-setup.sh              # Script de configuração rápida
+├── nginx/                      # Configuração Nginx
 │   ├── nginx.conf
 │   ├── conf.d/
 │   │   └── worklenz.conf
-│   └── ssl/                    # SSL certificates
-├── scripts/                    # Database scripts
+│   └── ssl/                    # Certificados SSL
+├── scripts/                    # Scripts de banco de dados
 │   └── db-init-wrapper.sh
-├── backups/                    # Database backups
+├── backups/                    # Backups do banco de dados
 ├── worklenz-backend/
-│   └── Dockerfile              # Backend Dockerfile
+│   └── Dockerfile              # Dockerfile do backend
 └── worklenz-frontend/
-    └── Dockerfile              # Frontend Dockerfile
+    └── Dockerfile              # Dockerfile do frontend
 ```
 
-## ❓ FAQ
+## Perguntas Frequentes
 
-### What if Docker is not installed?
-You must install Docker and Docker Desktop (for Windows/Mac) or Docker Engine (for Linux). Follow the official [Docker installation guide](https://docs.docker.com/get-docker/).
+### E se o Docker não estiver instalado?
+Você deve instalar o Docker e o Docker Desktop (para Windows/Mac) ou Docker Engine (para Linux). Siga o [guia oficial de instalação do Docker](https://docs.docker.com/get-docker/).
 
-### How do I install Docker Compose?
-Modern Docker installations (Docker Desktop and latest Docker Engine) include Docker Compose by default. You can check by running `docker compose version`. If you need to install it separately, see the [Compose installation guide](https://docs.docker.com/compose/install/).
+### Como instalo o Docker Compose?
+Instalações modernas do Docker (Docker Desktop e Docker Engine mais recente) incluem o Docker Compose por padrão. Você pode verificar executando `docker compose version`. Se precisar instalá-lo separadamente, consulte o [guia de instalação do Compose](https://docs.docker.com/compose/install/).
 
-### Why do I get "permission denied" errors on Linux?
-On Linux, you may need to run Docker commands with `sudo` or add your user to the `docker` group:
+### Por que recebo erros de "permissão negada" no Linux?
+No Linux, pode ser necessário executar comandos Docker com `sudo` ou adicionar seu usuário ao grupo `docker`:
 ```bash
 sudo usermod -aG docker $USER
 ```
-*Note: You may need to log out and back in for this change to take effect.*
+*Nota: Pode ser necessário fazer logout e login novamente para que essa alteração tenha efeito.*
 
-### I'm on Windows, why isn't it working?
-For the best experience on Windows, we recommend using **WSL2** (Windows Subsystem for Linux).
-1. Install [WSL2](https://learn.microsoft.com/en-us/windows/wsl/install).
-2. Install [Docker Desktop for Windows](https://docs.docker.com/desktop/install/windows-install/).
-3. Enable WSL2 integration in Docker Desktop Settings -> Resources -> WSL Integration.
+### Estou no Windows, por que não está funcionando?
+Para a melhor experiência no Windows, recomendamos usar o **WSL2** (Windows Subsystem for Linux).
+1. Instale o [WSL2](https://learn.microsoft.com/pt-br/windows/wsl/install).
+2. Instale o [Docker Desktop para Windows](https://docs.docker.com/desktop/install/windows-install/).
+3. Habilite a integração WSL2 nas Configurações do Docker Desktop -> Recursos -> Integração WSL.
 
-### How do I check if my hardware supports virtualization?
-- **Windows**: Check Performance tab in Task Manager. Look for "Virtualization: Enabled".
-- **Linux**: Run `lscpu | grep Virtualization`.
+### Como verifico se meu hardware suporta virtualização?
+- **Windows**: Verifique a aba Desempenho no Gerenciador de Tarefas. Procure por "Virtualização: Habilitada".
+- **Linux**: Execute `lscpu | grep Virtualization`.
 
-## 🆘 Troubleshooting
+## Solução de Problemas
 
-### Services won't start
+### Serviços não iniciam
 ```bash
-# Check logs
+# Verificar logs
 docker compose logs
 
-# Check service status
+# Verificar status dos serviços
 docker compose ps
 
-# Restart services
+# Reiniciar serviços
 ./manage.sh restart
 ```
 
-### Database initialization fails
+### Falha na inicialização do banco de dados
 ```bash
-# Check database logs
+# Verificar logs do banco de dados
 docker compose logs postgres
 
-# Verify database scripts exist
+# Verificar se os scripts do banco de dados existem
 ls -la worklenz-backend/database/sql/
 ```
 
-### SSL certificate issues
+### Problemas com certificado SSL
 ```bash
-# For Let's Encrypt
+# Para Let's Encrypt
 ./manage.sh ssl
 
-# Check certificate info
+# Verificar informações do certificado
 openssl x509 -in nginx/ssl/cert.pem -text -noout
 ```
 
-### Port conflicts
+### Conflitos de porta
 ```bash
-# Change ports in .env
+# Alterar portas em .env
 HTTP_PORT=8080
 HTTPS_PORT=8443
 ```
 
-## 📝 Migration from Old Setup
+## Migração da Configuração Antiga
 
-If you're migrating from the old `docker-compose.yml`:
+Se você está migrando da configuração antiga `docker-compose.yml`:
 
-1. **Backup your data**:
+1. **Faça backup dos seus dados**:
    ```bash
    docker compose exec db pg_dump -U postgres worklenz_db > backup.sql
    ```
 
-2. **Stop old containers**:
+2. **Pare os contêineres antigos**:
    ```bash
    docker compose -f docker-compose.yml down
    ```
 
-3. **Copy your `.env` files** to the new structure
+3. **Copie seus arquivos `.env`** para a nova estrutura
 
-4. **Start new setup**:
+4. **Inicie a nova configuração**:
    ```bash
    docker compose --profile express up -d
    ```
 
-5. **Restore data if needed**:
+5. **Restaure os dados se necessário**:
    ```bash
    ./manage.sh restore
    ```
 
-## 🤝 Contributing
+## Contribuindo
 
-When making changes to Docker configuration:
-1. Test with both express and advanced modes
-2. Verify health checks work
-3. Test SSL setup for both localhost and production
-4. Update this documentation
+Ao fazer alterações na configuração Docker:
+1. Teste com os modos express e avançado
+2. Verifique se as verificações de saúde funcionam
+3. Teste a configuração SSL tanto para localhost quanto para produção
+4. Atualize esta documentação

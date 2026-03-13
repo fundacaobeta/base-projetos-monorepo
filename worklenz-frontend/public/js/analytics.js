@@ -5,7 +5,12 @@
 
 class AnalyticsManager {
   constructor() {
-    this.isProduction = window.location.hostname === 'app.worklenz.com';
+    this.isProduction = [
+      'app.worklenz.com',
+      'worklenz.com',
+      'app.plenejagov.gov.br',
+      'plenejagov.gov.br',
+    ].includes(window.location.hostname);
     this.trackingId = this.isProduction ? 'G-7KSRKQ1397' : 'G-3LM2HGWEXG';
   }
 
@@ -58,9 +63,9 @@ class AnalyticsManager {
       font-size: 0.95rem;
     `;
     notice.innerHTML = `
-      <div style="margin-bottom: 6px; font-weight: 600; color: #fff; font-size: 1rem;">Analytics Notice</div>
-      <div style="margin-bottom: 8px; color: #f5f5f5;">This app uses Google Analytics for anonymous usage stats. No personal data is tracked.</div>
-      <button id="analytics-notice-btn" style="padding: 5px 14px; background: #1890ff; color: white; border: none; border-radius: 3px; cursor: pointer; font-size: 0.95rem;">Got it</button>
+      <div style="margin-bottom: 6px; font-weight: 600; color: #fff; font-size: 1rem;">Aviso de analytics</div>
+      <div style="margin-bottom: 8px; color: #f5f5f5;">O PlenejaGov usa Google Analytics para estatísticas anônimas de uso. Nenhum dado pessoal é rastreado.</div>
+      <button id="analytics-notice-btn" style="padding: 5px 14px; background: #1890ff; color: white; border: none; border-radius: 3px; cursor: pointer; font-size: 0.95rem;">Entendi</button>
     `;
     document.body.appendChild(notice);
 
@@ -79,7 +84,9 @@ class AnalyticsManager {
   checkPrivacyNotice() {
     const isProduction = 
       window.location.hostname === 'worklenz.com' ||
-      window.location.hostname === 'app.worklenz.com';
+      window.location.hostname === 'app.worklenz.com' ||
+      window.location.hostname === 'plenejagov.gov.br' ||
+      window.location.hostname === 'app.plenejagov.gov.br';
     const noticeShown = localStorage.getItem('privacyNoticeShown') === 'true';
 
     // Show notice if not in production and not shown before

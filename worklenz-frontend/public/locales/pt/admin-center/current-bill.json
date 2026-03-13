@@ -110,5 +110,31 @@
   "currentSeatsText": "Atualmente você tem {{seats}} assentos disponíveis.",
   "selectSeatsText": "Selecione o número de assentos adicionais para comprar.",
   "purchase": "Comprar",
-  "contactSales": "Fale com vendas"
+  "contactSales": "Fale com vendas",
+  "totalSeats": "Total de assentos",
+  "availableSeats": "Assentos disponíveis",
+  "addMoreSeats": "Adicionar mais assentos",
+  "continueWith": "Continuar com {{plan}}",
+  "changeToPlan": "Mudar para {{plan}}",
+  "submitSuccess": "Código resgatado com sucesso!",
+  "submitSuccessDescription": "Sua conta foi atualizada com os novos créditos.",
+  "percentUsed": "% Usado",
+  "sizeUnits": {
+    "bytes": "Bytes",
+    "kb": "KB",
+    "mb": "MB",
+    "gb": "GB",
+    "tb": "TB"
+  },
+  "seatPerMonth": "assento / mês",
+  "totalPrice": "Total R$",
+  "tryForFree": "Experimente gratuitamente",
+  "subscriptionUpdateSuccess": "Assinatura atualizada com sucesso!",
+  "paymentProcessorError": "Falha ao carregar o processador de pagamento",
+  "seatsLabel": "Assentos:",
+  "requiredField": "*",
+  "purchaseSeatsTextSingle": "Para continuar, você precisará comprar um assento adicional.",
+  "singleUserNote": "Atualmente você tem 1 assento disponível.",
+  "selectSeatsTextSingle": "Selecione o número de assentos adicionais para comprar.",
+  "phoneNumberPattern": "07xxxxxxxx"
 }

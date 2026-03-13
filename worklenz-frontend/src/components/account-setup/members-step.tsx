@@ -105,12 +105,7 @@ const MembersStep: React.FC<MembersStepProps> = ({ isDarkMode, styles, token }) 
   };
 
   const languages = [
-    { key: 'en', label: t('languages.en'), flag: '🇺🇸' },
-    { key: 'es', label: t('languages.es'), flag: '🇪🇸' },
-    { key: 'pt', label: t('languages.pt'), flag: '🇵🇹' },
-    { key: 'de', label: t('languages.de'), flag: '🇩🇪' },
-    { key: 'alb', label: t('languages.alb'), flag: '🇦🇱' },
-    { key: 'zh', label: t('languages.zh'), flag: '🇨🇳' }
+    { key: 'pt', label: t('languages.pt'), flag: '🇧🇷' }
   ];
 
   const handleLanguageChange = (languageKey: string) => {

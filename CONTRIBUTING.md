@@ -1,60 +1,60 @@
-# Contributing to Worklenz
+# Contribuindo com o PlenejaGov
 
-Thanks for your interest in contributing to Worklenz!
+Obrigado pelo seu interesse em contribuir com o PlenejaGov!
 
-We truly appreciate your willingness to invest your time and effort in helping us improve Worklenz.
+Agradecemos imensamente sua disposição em investir tempo e esforço para nos ajudar a melhorar o PlenejaGov.
 
-## Getting Started
+## Primeiros Passos
 
-To get started with development:
+Para começar com o desenvolvimento:
 
-1. **Quick Setup with Docker (Recommended):**
+1. **Configuração Rápida com Docker (Recomendado):**
    ```bash
    git clone https://github.com/Worklenz/worklenz.git
    cd worklenz
    ./quick-setup.sh
    ```
 
-2. **Manual Development Setup:**
-   See [SETUP_THE_PROJECT.md](SETUP_THE_PROJECT.md) for detailed instructions on setting up the development environment.
+2. **Configuração Manual de Desenvolvimento:**
+   Consulte o [SETUP_THE_PROJECT.md](SETUP_THE_PROJECT.md) para instruções detalhadas sobre como configurar o ambiente de desenvolvimento.
 
-3. **Docker Management:**
-   Use `./manage.sh` for common operations like viewing logs, creating backups, and managing services.
+3. **Gerenciamento Docker:**
+   Use `./manage.sh` para operações comuns como visualizar logs, criar backups e gerenciar serviços.
 
-## Code of Conduct
+## Código de Conduta
 
-We have adopted a Code of Conduct to ensure a welcoming and inclusive environment for everyone. Please read and follow our [Code of Conduct](CODE_OF_CONDUCT.md) when participating in this project.
+Adotamos um Código de Conduta para garantir um ambiente acolhedor e inclusivo para todos. Por favor, leia e siga nosso [Código de Conduta](CODE_OF_CONDUCT.md) ao participar deste projeto.
 
-## How to Contribute
+## Como Contribuir
 
-1. Fork the repository and create a new branch for your feature or bug fix.
-2. Make your changes and ensure that the code follows our coding standards.
-3. Write tests for your changes, if applicable.
-4. Update the documentation if necessary.
-5. Commit your changes with descriptive commit messages.
-6. Push your changes to your forked repository.
-7. Create a pull request against the main repository's `main` branch.
+1. Faça um fork do repositório e crie um novo branch para sua funcionalidade ou correção de bug.
+2. Faça suas alterações e certifique-se de que o código segue nossos padrões de codificação.
+3. Escreva testes para suas alterações, se aplicável.
+4. Atualize a documentação se necessário.
+5. Faça commits com mensagens descritivas.
+6. Envie suas alterações para o seu repositório fork.
+7. Crie um pull request contra o branch `main` do repositório principal.
 
-## Coding Standards
+## Padrões de Codificação
 
-- Follow the [React Documentation](https://react.dev/learn) for best practices in React development.
-- Use [TypeScript](https://www.typescriptlang.org/) for both frontend and backend code.
-- Follow the [Conventional Commits](https://www.conventionalcommits.org/) specification for commit messages.
+- Siga a [Documentação do React](https://react.dev/learn) para boas práticas no desenvolvimento React.
+- Use [TypeScript](https://www.typescriptlang.org/) tanto para o frontend quanto para o backend.
+- Siga a especificação [Conventional Commits](https://www.conventionalcommits.org/) para mensagens de commit.
 
 ## Issues
 
-If you encounter any issues or have suggestions for improvements, please open an issue on our [issue tracker](https://github.com/worklenz/worklenz/issues). Be sure to provide as much information as possible, including steps to reproduce the issue, expected behavior, and actual behavior.
+Se encontrar algum problema ou tiver sugestões de melhorias, por favor abra uma issue em nosso [rastreador de issues](https://github.com/worklenz/worklenz/issues). Certifique-se de fornecer o máximo de informações possível, incluindo passos para reproduzir o problema, comportamento esperado e comportamento atual.
 
 ## Pull Requests
 
-All contributions should be submitted as pull requests against the `development` branch of the main repository. We will review and provide feedback on your pull request as soon as possible. Please ensure that your pull request meets the following criteria:
+Todas as contribuições devem ser enviadas como pull requests contra o branch `development` do repositório principal. Iremos revisar e fornecer feedback o mais rápido possível. Certifique-se de que seu pull request atenda aos seguintes critérios:
 
-- Follows our coding standards
-- Updates documentation, if necessary
-- Has descriptive commit messages
+- Segue nossos padrões de codificação
+- Atualiza a documentação, se necessário
+- Tem mensagens de commit descritivas
 
-## License
+## Licença
 
-By contributing to Worklenz, you agree that your contributions will be licensed under the [GNU Affero General Public License Version 3 (AGPLv3)](LICENSE).
+Ao contribuir com o PlenejaGov, você concorda que suas contribuições serão licenciadas sob a [Licença Pública Geral GNU Affero Versão 3 (AGPLv3)](LICENSE).
 
-Thank you again for your interest in contributing to Worklenz! We look forward to your contributions.
+Obrigado novamente pelo seu interesse em contribuir com o PlenejaGov! Aguardamos ansiosamente suas contribuições.

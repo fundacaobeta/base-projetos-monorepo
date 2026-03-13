@@ -1,14 +1,14 @@
 {
-  "name": "Worklenz - Project Management",
-  "short_name": "Worklenz",
-  "description": "A comprehensive project management application for teams",
+  "name": "PlenejaGov - Gestão de Projetos",
+  "short_name": "PlenejaGov",
+  "description": "Plataforma de gerenciamento de projetos para equipes governamentais",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#2b2b2b",
   "orientation": "portrait-primary",
   "categories": ["productivity", "business"],
-  "lang": "en",
+  "lang": "pt",
   "scope": "/",
   "icons": [
     {
@@ -32,9 +32,9 @@
   ],
   "shortcuts": [
     {
-      "name": "Dashboard",
-      "short_name": "Dashboard",
-      "description": "View your project dashboard",
+      "name": "Painel",
+      "short_name": "Painel",
+      "description": "Ver o painel de projetos",
       "url": "/worklenz",
       "icons": [
         {
@@ -44,9 +44,9 @@
       ]
     },
     {
-      "name": "Tasks",
-      "short_name": "Tasks",
-      "description": "Manage your tasks",
+      "name": "Tarefas",
+      "short_name": "Tarefas",
+      "description": "Gerenciar suas tarefas",
       "url": "/worklenz/tasks",
       "icons": [
         {
@@ -75,4 +75,4 @@
   "launch_handler": {
     "client_mode": "focus-existing"
   }
-} 
+}

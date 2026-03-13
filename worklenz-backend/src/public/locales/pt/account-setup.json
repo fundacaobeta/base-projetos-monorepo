@@ -3,11 +3,15 @@
 
   "setupYourAccount": "Configure sua conta.",
   "organizationStepTitle": "Nomeie sua organização",
-  "organizationStepLabel": "Escolha um nome para sua conta Worklenz.",
+  "organizationStepLabel": "Escolha um nome para sua conta PlanejaGov.",
 
   "projectStepTitle": "Crie seu primeiro projeto",
   "projectStepLabel": "Em qual projeto você está trabalhando agora?",
   "projectStepPlaceholder": "ex. Plano de Marketing",
+
+  "tasksStepTitle": "Crie suas primeiras tarefas",
+  "tasksStepLabel": "Digite algumas tarefas que você vai fazer em",
+  "tasksStepAddAnother": "Adicionar outro",
 
   "step2Title": "Crie suas primeiras tarefas",
   "step2InputLabel": "Digite algumas tarefas que você vai fazer em",

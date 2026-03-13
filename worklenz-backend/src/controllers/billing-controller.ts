@@ -3,7 +3,7 @@ import { IWorkLenzResponse } from "../interfaces/worklenz-response";
 
 import db from "../config/db";
 import { ServerResponse } from "../models/server-response";
-import WorklenzControllerBase from "./worklenz-controller-base";
+import PlenejaGovControllerBase from "./worklenz-controller-base";
 import HandleExceptions from "../decorators/handle-exceptions";
 import { getTeamMemberCount } from "../shared/paddle-utils";
 import { generatePayLinkRequest, updateUsers } from "../shared/paddle-requests";
@@ -18,7 +18,7 @@ import path from "path";
 import { log_error } from "../shared/utils";
 import { sendEmail } from "../shared/email";
 
-export default class BillingController extends WorklenzControllerBase {
+export default class BillingController extends PlenejaGovControllerBase {
   public static async getInitialCharge(count: number) {
     if (!count) throw new Error("No selected plan detected.");
 
@@ -130,7 +130,7 @@ VALUES ($1, $2, $3);`;
       email,
       description: `${name} (${email})`,
       page_type: "IN_APP",
-      logo: "https://app.worklenz.com/assets/icons/icon-96x96.png",
+      logo: `${process.env.FRONTEND_URL ? `https://${process.env.FRONTEND_URL}` : "https://planejagov.gov.br"}/assets/icons/icon-96x96.png`,
       start_date: moment().format("YYYY-MM-DD"),
       do_initial_payment: 1,
       interval: 1,
@@ -264,11 +264,11 @@ VALUES ($1, $2, $3);`;
       <head>
           <meta charset="UTF-8">
           <meta name="viewport" content="width=device-width, initial-scale=1.0">
-          <title>Worklenz Local Billing - Contact Information</title>
+          <title>PlenejaGov Local Billing - Contact Information</title>
       </head>
       <body>
           <div>
-              <h1 style="text-align: center; margin-bottom: 20px;">Worklenz Local Billing - Contact Information</h1>
+              <h1 style="text-align: center; margin-bottom: 20px;">PlenejaGov Local Billing - Contact Information</h1>
               <p><strong>Name:</strong> ${req.user?.name}</p>
               <p><strong>Contact No:</strong> ${contactNo as string}</p>
               <p><strong>Email:</strong> ${req.user?.email}</p>
@@ -279,7 +279,7 @@ VALUES ($1, $2, $3);`;
 
     sendEmail({
       to,
-      subject: "Worklenz - Local billing contact.",
+      subject: "PlenejaGov - Local billing contact.",
       html
     });
     return res.status(200).send(new ServerResponse(true, null, "Your contact information has been sent successfully."));

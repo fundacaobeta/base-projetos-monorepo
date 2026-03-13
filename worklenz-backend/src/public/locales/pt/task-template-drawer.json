@@ -4,6 +4,7 @@
   "cancelText": "Cancelar",
   "saveText": "Salvar",
   "templateNameText": "Nome do Template",
+  "templateNameRequired": "O nome do template é obrigatório",
   "selectedTasks": "Tarefas Selecionadas",
   "removeTask": "Remover",
   "cancelButton": "Cancelar",

@@ -176,10 +176,10 @@ const StaticLicenseExpired = memo(() => {
         }}
       >
         <h1 style={{ fontSize: '24px', color: '#faad14', marginBottom: '16px' }}>
-          Your Worklenz trial has expired!
+          Seu período de teste do PlenejaGov expirou!
         </h1>
         <p style={{ fontSize: '16px', color: '#555', marginBottom: '24px' }}>
-          Please upgrade now to continue using Worklenz.
+          Por favor, atualize agora para continuar usando o PlenejaGov.
         </p>
         <button
           style={{

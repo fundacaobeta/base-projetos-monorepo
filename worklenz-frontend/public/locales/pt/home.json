@@ -35,6 +35,7 @@
     "nextWeek": "Semana que vem",
     "nextMonth": "Próximo mês",
     "projectRequired": "Por favor selecione um projeto",
+    "pressTabToSelectDueDateAndProject": "Pressione Tab para selecionar uma data de vencimento e um projeto",
     "dueOn": "Tarefas vencidas em",
     "taskRequired": "Por favor adicione uma tarefa",
     "list": "Lista",

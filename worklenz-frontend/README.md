@@ -1,101 +1,101 @@
-# Worklenz - React Frontend
+# PlenejaGov - Frontend React
 
-Worklenz is a project management application built with React, TypeScript, and Ant Design. The project is bundled using [Vite](https://vitejs.dev/).
+PlenejaGov é uma plataforma de gerenciamento de projetos construída com React, TypeScript e Ant Design. O projeto é empacotado usando [Vite](https://vitejs.dev/).
 
-## Table of Contents
+## Sumário
 
-- [Getting Started](#getting-started)
-- [Available Scripts](#available-scripts)
-- [Project Structure](#project-structure)
-- [Contributing](#contributing)
-- [Learn More](#learn-more)
-- [License](#license)
+- [Primeiros Passos](#primeiros-passos)
+- [Scripts Disponíveis](#scripts-disponíveis)
+- [Estrutura do Projeto](#estrutura-do-projeto)
+- [Contribuindo](#contribuindo)
+- [Saiba Mais](#saiba-mais)
+- [Licença](#licença)
 
-## Getting Started
+## Primeiros Passos
 
-To get started with the project, follow these steps:
+Para começar com o projeto, siga estes passos:
 
-1. **Clone the repository**:
+1. **Clone o repositório**:
    ```bash
    git clone https://github.com/Worklenz/worklenz.git
    ```
-2. **Navigate to the project directory**:
+2. **Navegue até o diretório do projeto**:
    ```bash
    cd worklenz/worklenz-frontend
    ```
-3. **Install dependencies**:
+3. **Instale as dependências**:
    ```bash
    npm install
    ```
-4. **Start the development server**:
+4. **Inicie o servidor de desenvolvimento**:
    ```bash
    npm run dev
    ```
-5. Open [http://localhost:5000](http://localhost:5000) in your browser to view the application.
+5. Abra [http://localhost:5000](http://localhost:5000) no seu navegador para visualizar a aplicação.
 
-## Available Scripts
+## Scripts Disponíveis
 
-In the project directory, you can run:
+No diretório do projeto, você pode executar:
 
 ### `npm run dev`
 
-Runs the app in the development mode.\
-Open [http://localhost:5000](http://localhost:5000) to view it in the browser.
+Executa o aplicativo no modo de desenvolvimento.
+Abra [http://localhost:5000](http://localhost:5000) para visualizá-lo no navegador.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+A página será recarregada se você fizer edições.
+Você também verá erros de lint no console.
 
 ### `npm run build`
 
-Builds the app for production to the `dist` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Compila o aplicativo para produção na pasta `dist`.
+Ele empacota o React corretamente no modo de produção e otimiza o build para a melhor performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+O build é minificado e os nomes de arquivo incluem os hashes.
+Seu aplicativo está pronto para ser implantado!
 
 ### `npm run preview`
 
-Serves the production build locally for testing.\
-Open [http://localhost:4173](http://localhost:4173) to preview the build.
+Serve o build de produção localmente para testes.
+Abra [http://localhost:4173](http://localhost:4173) para visualizar o build.
 
-## Project Structure
+## Estrutura do Projeto
 
-The project is organized around a feature-based structure:
+O projeto está organizado em torno de uma estrutura baseada em funcionalidades:
 
 ```
 src/
-├── components/        # Reusable UI components
-├── hooks/             # Custom React hooks
-├── lib/               # Feature-specific logic
-├── pages/             # Route components
-├── services/          # API services
-├── shared/            # Shared utilities, constants, and types
-├── store/             # Global state management
-├── types/             # TypeScript type definitions
-├── utils/             # Utility functions
-├── App.tsx            # Main application component
-└── main.tsx           # Application entry point
+├── components/        # Componentes UI reutilizáveis
+├── hooks/             # Hooks React customizados
+├── lib/               # Lógica específica de funcionalidades
+├── pages/             # Componentes de rota
+├── services/          # Serviços de API
+├── shared/            # Utilitários, constantes e tipos compartilhados
+├── store/             # Gerenciamento de estado global
+├── types/             # Definições de tipos TypeScript
+├── utils/             # Funções utilitárias
+├── App.tsx            # Componente principal da aplicação
+└── main.tsx           # Ponto de entrada da aplicação
 ```
 
-## Contributing
+## Contribuindo
 
-Contributions are welcome! If you'd like to contribute, please follow these steps:
+Contribuições são bem-vindas! Se deseja contribuir, siga estes passos:
 
-1. Fork the repository.
-2. Create a new branch (`git checkout -b feature/YourFeatureName`).
-3. Commit your changes (`git commit -m 'Add some feature'`).
-4. Push to the branch (`git push origin feature/YourFeatureName`).
-5. Open a pull request.
+1. Faça um fork do repositório.
+2. Crie um novo branch (`git checkout -b feature/NomeDaSuaFuncionalidade`).
+3. Faça commit das suas alterações (`git commit -m 'Adicionar alguma funcionalidade'`).
+4. Faça push para o branch (`git push origin feature/NomeDaSuaFuncionalidade`).
+5. Abra um pull request.
 
-## Learn More
+## Saiba Mais
 
-To learn more about the technologies used in this project:
+Para saber mais sobre as tecnologias usadas neste projeto:
 
-- [React Documentation](https://react.dev/)
-- [TypeScript Documentation](https://www.typescriptlang.org/docs/)
-- [Ant Design Documentation](https://ant.design/docs/react/introduce)
-- [Vite Documentation](https://vitejs.dev/guide/)
+- [Documentação do React](https://react.dev/)
+- [Documentação do TypeScript](https://www.typescriptlang.org/docs/)
+- [Documentação do Ant Design](https://ant.design/docs/react/introduce)
+- [Documentação do Vite](https://vitejs.dev/guide/)
 
-## License
+## Licença
 
-Worklenz is open source and released under the [GNU Affero General Public License Version 3 (AGPLv3)](LICENSE).
+PlenejaGov é open source e lançado sob a [Licença Pública Geral GNU Affero Versão 3 (AGPLv3)](LICENSE).

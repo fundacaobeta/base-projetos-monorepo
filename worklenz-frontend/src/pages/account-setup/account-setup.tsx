@@ -465,12 +465,7 @@ const AccountSetup: React.FC = () => {
 
   // Language switcher functionality
   const languages = [
-    { key: Language.EN, label: 'English', flag: '🇺🇸' },
-    { key: Language.ES, label: 'Español', flag: '🇪🇸' },
-    { key: Language.PT, label: 'Português', flag: '🇵🇹' },
-    { key: Language.DE, label: 'Deutsch', flag: '🇩🇪' },
-    { key: Language.ALB, label: 'Shqip', flag: '🇦🇱' },
-    { key: Language.ZH_CN, label: '简体中文', flag: '🇨🇳' }
+    { key: Language.PT, label: 'Português', flag: '🇧🇷' }
   ];
 
   const handleLanguageChange = (languageKey: ILanguageType) => {

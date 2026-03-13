@@ -37,25 +37,25 @@ export const SurveySettingsCard: React.FC = () => {
           <Result
             icon={<CheckCircleOutlined style={{ color: '#52c41a' }} />}
             title="Survey Completed"
-            subTitle="Thank you for completing the personalization survey. Your responses help us improve Worklenz."
+            subTitle="Obrigado por completar a pesquisa de personalização. Suas respostas nos ajudam a melhorar o PlenejaGov."
             extra={
               <Button onClick={() => setShowModal(true)}>
-                Update Your Responses
+                Atualizar Respostas
               </Button>
             }
           />
         ) : (
           <>
             <Alert
-              message="Help us personalize your experience"
-              description="Take a quick survey to tell us about your organization and how you use Worklenz."
+              message="Ajude-nos a personalizar sua experiência"
+              description="Responda a uma pesquisa rápida para nos contar sobre sua organização e como você usa o PlenejaGov."
               type="info"
               showIcon
               style={{ marginBottom: 16 }}
             />
             <div style={{ textAlign: 'center' }}>
               <Button type="primary" size="large" onClick={() => setShowModal(true)}>
-                Take Survey Now
+                Responder Pesquisa Agora
               </Button>
             </div>
           </>

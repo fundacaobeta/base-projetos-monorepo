@@ -52,7 +52,7 @@ const PushNotificationTemplate = ({
             {notificationData.team}
           </>
         )}
-        {!notificationData.team && 'Worklenz'}
+        {!notificationData.team && 'PlenejaGov'}
       </div>
       <div
         style={{

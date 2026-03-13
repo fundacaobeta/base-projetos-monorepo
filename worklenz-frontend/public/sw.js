@@ -1,12 +1,12 @@
-// Worklenz Service Worker
+// PlenejaGov Service Worker
 // Provides offline functionality, caching, and performance improvements
 
 const CACHE_VERSION = 'v1.0.0';
 const CACHE_NAMES = {
-  STATIC: `worklenz-static-${CACHE_VERSION}`,
-  DYNAMIC: `worklenz-dynamic-${CACHE_VERSION}`,
-  API: `worklenz-api-${CACHE_VERSION}`,
-  IMAGES: `worklenz-images-${CACHE_VERSION}`
+  STATIC: `plenejagov-static-${CACHE_VERSION}`,
+  DYNAMIC: `plenejagov-dynamic-${CACHE_VERSION}`,
+  API: `plenejagov-api-${CACHE_VERSION}`,
+  IMAGES: `plenejagov-images-${CACHE_VERSION}`
 };
 
 // Resources to cache immediately on install
@@ -299,7 +299,7 @@ self.addEventListener('push', event => {
   };
   
   event.waitUntil(
-    self.registration.showNotification('Worklenz', options)
+    self.registration.showNotification('PlenejaGov', options)
   );
 });
 

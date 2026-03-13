@@ -8,7 +8,7 @@ i18n
   .use(LanguageDetector)
   .use(initReactI18next)
   .init({
-    fallbackLng: 'en',
+    fallbackLng: 'pt',
     defaultNS: 'common',
     ns: ['common', 'home'], // Preload home namespace
     
@@ -17,7 +17,7 @@ i18n
     },
     
     detection: {
-      order: ['localStorage', 'navigator'],
+      order: ['localStorage'],
       caches: ['localStorage'],
     },
     

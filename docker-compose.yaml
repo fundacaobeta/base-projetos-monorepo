@@ -5,7 +5,7 @@ services:
     container_name: worklenz-postgres
     restart: unless-stopped
     environment:
-      POSTGRES_DB: ${DB_NAME:-worklenz_db}
+      POSTGRES_DB: ${DB_NAME:-plenejagov_db}
       POSTGRES_USER: ${DB_USER:-postgres}
       POSTGRES_PASSWORD: ${DB_PASSWORD:?DB_PASSWORD is required}
       POSTGRES_INITDB_ARGS: "--encoding=UTF8 --lc-collate=en_US.UTF-8 --lc-ctype=en_US.UTF-8"
@@ -17,7 +17,7 @@ services:
     networks:
       - worklenz-backend
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U ${DB_USER:-postgres} -d ${DB_NAME:-worklenz_db}"]
+      test: ["CMD-SHELL", "pg_isready -U ${DB_USER:-postgres} -d ${DB_NAME:-plenejagov_db}"]
       interval: 10s
       timeout: 5s
       retries: 5
@@ -36,7 +36,7 @@ services:
     environment:
       PGHOST: postgres
       PGPORT: 5432
-      PGDATABASE: ${DB_NAME:-worklenz_db}
+      PGDATABASE: ${DB_NAME:-plenejagov_db}
       PGUSER: ${DB_USER:-postgres}
       PGPASSWORD: ${DB_PASSWORD}
       BACKUP_RETENTION_DAYS: ${BACKUP_RETENTION_DAYS:-30}
@@ -134,7 +134,7 @@ services:
     environment:
       MINIO_ROOT_USER: ${AWS_ACCESS_KEY_ID:-minioadmin}
       MINIO_ROOT_PASSWORD: ${AWS_SECRET_ACCESS_KEY:-minioadmin}
-      MINIO_BUCKET: ${AWS_BUCKET:-worklenz-bucket}
+      MINIO_BUCKET: ${AWS_BUCKET:-plenejagov-bucket}
     networks:
       - worklenz-backend
     entrypoint: >
@@ -167,12 +167,12 @@ services:
       PORT: 3000
       SESSION_SECRET: ${SESSION_SECRET:?SESSION_SECRET is required}
       COOKIE_SECRET: ${COOKIE_SECRET:?COOKIE_SECRET is required}
-      SESSION_NAME: ${SESSION_NAME:-worklenz.sid}
+      SESSION_NAME: ${SESSION_NAME:-plenejagov.sid}
 
       # Database Configuration
       DB_HOST: postgres
       DB_PORT: 5432
-      DB_NAME: ${DB_NAME:-worklenz_db}
+      DB_NAME: ${DB_NAME:-plenejagov_db}
       DB_USER: ${DB_USER:-postgres}
       DB_PASSWORD: ${DB_PASSWORD}
       DB_MAX_CLIENTS: ${DB_MAX_CLIENTS:-50}
@@ -194,7 +194,7 @@ services:
 
       # S3/MinIO Configuration (Express mode default)
       AWS_REGION: ${AWS_REGION:-us-east-1}
-      AWS_BUCKET: ${AWS_BUCKET:-worklenz-bucket}
+      AWS_BUCKET: ${AWS_BUCKET:-plenejagov-bucket}
       AWS_ACCESS_KEY_ID: ${AWS_ACCESS_KEY_ID:-minioadmin}
       AWS_SECRET_ACCESS_KEY: ${AWS_SECRET_ACCESS_KEY:-minioadmin}
       S3_URL: ${S3_URL:-http://minio:9000}
@@ -253,7 +253,7 @@ services:
       # Runtime environment variables (injected at startup)
       VITE_API_URL: ${VITE_API_URL}
       VITE_SOCKET_URL: ${VITE_SOCKET_URL}
-      VITE_APP_TITLE: ${VITE_APP_TITLE:-Worklenz}
+      VITE_APP_TITLE: ${VITE_APP_TITLE:-PlenejaGov}
       VITE_APP_ENV: production
       VITE_ENABLE_RECAPTCHA: ${VITE_ENABLE_RECAPTCHA:-false}
       VITE_RECAPTCHA_SITE_KEY: ${VITE_RECAPTCHA_SITE_KEY:-}

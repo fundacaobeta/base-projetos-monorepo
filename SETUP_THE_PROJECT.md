@@ -1,177 +1,179 @@
-# Setting up development environment
+# Configurando o Ambiente de Desenvolvimento
 
-Getting started with development is a breeze! Follow these steps and you'll be contributing in no time.
+Começar com o desenvolvimento é fácil! Siga estes passos e você estará contribuindo em pouco tempo.
 
-## Requirements
+## Requisitos
 
-- Node.js version v20 or newer - [Node.js](https://nodejs.org/en/download/)
-- PostgreSQL version v15 or newer - [PostgreSQL](https://www.postgresql.org/download/)
-- S3-compatible storage (like MinIO) for file storage
+- Node.js versão v20 ou mais recente - [Node.js](https://nodejs.org/en/download/)
+- PostgreSQL versão v15 ou mais recente - [PostgreSQL](https://www.postgresql.org/download/)
+- Armazenamento compatível com S3 (como MinIO) para armazenamento de arquivos
 
-## Prerequisites
+## Pré-requisitos
 
-- `$ npm install -g typescript` (optional, but recommended)
+- `$ npm install -g typescript` (opcional, mas recomendado)
 
-## Installation
-**Clone the repository:**
+## Instalação
+
+**Clone o repositório:**
 
    ```bash
    git clone https://github.com/Worklenz/worklenz.git
    cd worklenz
    ```
 
-### Frontend installation
+### Instalação do Frontend
 
-1. **Navigate to the frontend project directory:**
+1. **Navegue até o diretório do projeto frontend:**
 
    ```bash
    cd worklenz-frontend
    ```
-2. **Install dependencies:**
+
+2. **Instale as dependências:**
 
    ```bash
    npm install
    ```
-   
-3. **Run the frontend:**
+
+3. **Execute o frontend:**
    ```bash
    npm start
    ```
-   
-4. Navigate to [http://localhost:5173](http://localhost:5173) (development server)
 
-### Backend installation
-   
-1. **Navigate to the backend project directory:**
+4. Acesse [http://localhost:5173](http://localhost:5173) (servidor de desenvolvimento)
+
+### Instalação do Backend
+
+1. **Navegue até o diretório do projeto backend:**
 
    ```bash
    cd worklenz-backend
    ```
 
-2. **Open your IDE:**
+2. **Abra sua IDE:**
 
-   Open the project directory in your preferred code editor or IDE like Visual Studio Code.
+   Abra o diretório do projeto no seu editor de código ou IDE preferido, como o Visual Studio Code.
 
-3. **Configure Environment Variables:**
+3. **Configure as Variáveis de Ambiente:**
 
-   - Create a copy of the `.env.example` file and name it `.env`.
-   - Update the required fields in `.env` with your specific configuration.
+   - Crie uma cópia do arquivo `.env.example` e nomeie-o `.env`.
+   - Atualize os campos obrigatórios em `.env` com sua configuração específica.
 
-4. **Set up Database**
-   - Create a new database named `worklenz_db` on your local PostgreSQL server. 
-   - Update the database connection details in your `.env` file.
-   - Execute the SQL setup files in the correct order:
-   
+4. **Configure o Banco de Dados**
+   - Crie um novo banco de dados chamado `worklenz_db` em seu servidor PostgreSQL local.
+   - Atualize os detalhes de conexão do banco de dados em seu arquivo `.env`.
+   - Execute os arquivos SQL de configuração na ordem correta:
+
    ```bash
-   # From your PostgreSQL client or command line
-   psql -U your_username -d worklenz_db -f database/sql/0_extensions.sql
-   psql -U your_username -d worklenz_db -f database/sql/1_tables.sql
-   psql -U your_username -d worklenz_db -f database/sql/indexes.sql
-   psql -U your_username -d worklenz_db -f database/sql/4_functions.sql
-   psql -U your_username -d worklenz_db -f database/sql/triggers.sql
-   psql -U your_username -d worklenz_db -f database/sql/3_views.sql
-   psql -U your_username -d worklenz_db -f database/sql/2_dml.sql
-   psql -U your_username -d worklenz_db -f database/sql/5_database_user.sql
+   # Do seu cliente PostgreSQL ou linha de comando
+   psql -U seu_usuario -d worklenz_db -f database/sql/0_extensions.sql
+   psql -U seu_usuario -d worklenz_db -f database/sql/1_tables.sql
+   psql -U seu_usuario -d worklenz_db -f database/sql/indexes.sql
+   psql -U seu_usuario -d worklenz_db -f database/sql/4_functions.sql
+   psql -U seu_usuario -d worklenz_db -f database/sql/triggers.sql
+   psql -U seu_usuario -d worklenz_db -f database/sql/3_views.sql
+   psql -U seu_usuario -d worklenz_db -f database/sql/2_dml.sql
+   psql -U seu_usuario -d worklenz_db -f database/sql/5_database_user.sql
    ```
-   
-   Alternatively, you can use the provided shell script:
-   
+
+   Alternativamente, você pode usar o script shell fornecido:
+
    ```bash
-   # Make sure the script is executable
+   # Certifique-se de que o script é executável
    chmod +x database/00-init-db.sh
-   # Run the script (may need modifications for local execution)
+   # Execute o script (pode precisar de modificações para execução local)
    ./database/00-init-db.sh
    ```
 
-5. **Install Dependencies:**
+5. **Instale as Dependências:**
 
    ```bash
    npm install
    ```
 
-6. **Run the Development Server:**
+6. **Execute o Servidor de Desenvolvimento:**
 
-   **Option 1: Combined development mode (Recommended)**
-   
+   **Opção 1: Modo de desenvolvimento combinado (Recomendado)**
+
    ```bash
    npm run dev:all
    ```
-   
-   This single command runs both the build watch process and the server with auto-restart. No need to run `npm run dev` and `npm start` separately.
 
-   **Option 2: Separate commands**
-   
+   Este comando único executa tanto o processo de build em modo watch quanto o servidor com reinício automático. Não é necessário executar `npm run dev` e `npm start` separadamente.
+
+   **Opção 2: Comandos separados**
+
    ```bash
-   # Terminal 1: Build and watch for changes
+   # Terminal 1: Build e monitoramento de alterações
    npm run dev
-   
-   # Terminal 2: Start the server
+
+   # Terminal 2: Iniciar o servidor
    npm start
    ```
 
-   The first option (`npm run dev:all`) is recommended as it simplifies the development workflow.
+   A primeira opção (`npm run dev:all`) é recomendada por simplificar o fluxo de desenvolvimento.
 
-## Docker Setup (Alternative - Recommended for Quick Start)
+## Configuração Docker (Alternativa - Recomendada para Início Rápido)
 
-For an easier setup with production-ready features, use the new Docker setup with automated scripts:
+Para uma configuração mais fácil com recursos prontos para produção, use a nova configuração Docker com scripts automatizados:
 
-### Quick Start with Docker
+### Início Rápido com Docker
 
-**Option 1: Automated Setup (Easiest)**
+**Opção 1: Configuração Automatizada (Mais Fácil)**
 
 ```bash
-# From the root directory, run the automated setup
+# A partir do diretório raiz, execute a configuração automatizada
 ./quick-setup.sh
 ```
 
-This script will:
-- Create `.env` file with auto-generated security secrets
-- Configure URLs for localhost
-- Set up SSL certificates (self-signed for localhost)
-- Install and start all services (PostgreSQL, Redis, MinIO, nginx)
+Este script irá:
+- Criar o arquivo `.env` com segredos de segurança gerados automaticamente
+- Configurar URLs para localhost
+- Configurar certificados SSL (autoassinado para localhost)
+- Instalar e iniciar todos os serviços (PostgreSQL, Redis, MinIO, nginx)
 
-**Option 2: Manual Docker Setup**
+**Opção 2: Configuração Manual Docker**
 
 ```bash
-# Copy environment configuration
+# Copiar configuração de ambiente
 cp .env.example .env
-# Edit .env if needed (defaults work for localhost)
+# Editar .env se necessário (os padrões funcionam para localhost)
 
-# Start services (Express mode - all services bundled)
+# Iniciar serviços (modo Express - todos os serviços incluídos)
 docker compose --profile express up -d
 ```
 
-### Access the Application
+### Acessar a Aplicação
 
-- **Application**: https://localhost (or http://localhost)
-- **MinIO Console**: http://localhost:9001 (login: minioadmin/minioadmin)
+- **Aplicação**: https://localhost (ou http://localhost)
+- **Console MinIO**: http://localhost:9001 (login: minioadmin/minioadmin)
 
-### Management Commands
+### Comandos de Gerenciamento
 
 ```bash
-./manage.sh status    # View service status
-./manage.sh logs      # View logs
-./manage.sh stop      # Stop all services
-./manage.sh start     # Start all services
-./manage.sh backup    # Create database backup
-./manage.sh restart   # Restart all services
+./manage.sh status    # Ver status dos serviços
+./manage.sh logs      # Ver logs
+./manage.sh stop      # Parar todos os serviços
+./manage.sh start     # Iniciar todos os serviços
+./manage.sh backup    # Criar backup do banco de dados
+./manage.sh restart   # Reiniciar todos os serviços
 ```
 
-### What's Included
+### O que está Incluído
 
-The Docker setup now includes:
-- ✅ Nginx reverse proxy with SSL/TLS support
-- ✅ Redis caching for improved performance
-- ✅ Automated database backups
-- ✅ Health checks on all services
-- ✅ Network isolation and security hardening
-- ✅ Production-ready configuration
+A configuração Docker agora inclui:
+- ✅ Proxy reverso Nginx com suporte SSL/TLS
+- ✅ Cache Redis para melhor performance
+- ✅ Backups automáticos do banco de dados
+- ✅ Verificações de saúde em todos os serviços
+- ✅ Isolamento de rede e endurecimento de segurança
+- ✅ Configuração pronta para produção
 
-### For Complete Documentation
+### Para Documentação Completa
 
-See [DOCKER_SETUP.md](DOCKER_SETUP.md) for:
-- Production deployment guide
-- SSL/TLS configuration
-- Backup and restore procedures
-- Advanced configuration options
-- Troubleshooting guide
+Consulte o [DOCKER_SETUP.md](DOCKER_SETUP.md) para:
+- Guia de implantação em produção
+- Configuração SSL/TLS
+- Procedimentos de backup e restauração
+- Opções de configuração avançadas
+- Guia de solução de problemas

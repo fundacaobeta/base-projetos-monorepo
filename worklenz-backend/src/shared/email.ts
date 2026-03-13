@@ -88,7 +88,7 @@ export async function sendEmail(email: IEmail): Promise<string | null> {
           }
         }
       },
-      Source: "Worklenz <noreply@worklenz.com>"
+      Source: "PlenejaGov <noreply@planejagov.gov.br>"
     });
 
     const res = await sesClient.send(command);

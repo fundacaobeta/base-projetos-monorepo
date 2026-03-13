@@ -4,5 +4,8 @@
   "owner": "Proprietário da Organização",
   "admins": "Administradores da Organização",
   "contactNumber": "Adicione o Número de Contato",
-  "edit": "Editar"
+  "edit": "Editar",
+  "emailAddress": "Endereço de E-mail",
+  "enterOrganizationName": "Digite o nome da organização",
+  "ownerSuffix": " (Proprietário)"
 }

@@ -5,7 +5,7 @@
 
 class HubSpotManager {
   constructor() {
-    this.isProduction = window.location.hostname === 'app.worklenz.com';
+    this.isProduction = window.location.hostname === 'app.plenejagov.gov.br';
     this.scriptId = 'hs-script-loader';
     this.scriptSrc = '//js.hs-scripts.com/22348300.js';
     this.styleId = 'hubspot-dark-mode-override';
@@ -91,12 +91,12 @@ class HubSpotManager {
       [data-test-id="chat-widget"] div {
         background-color: transparent !important;
       }
-      /* Ensure Worklenz app elements are not affected by HubSpot styles */
+      /* Ensure PlenejaGov app elements are not affected by HubSpot styles */
       .ant-menu,
       .ant-menu *,
       [class*="settings"],
       [class*="sidebar"],
-      .worklenz-app *:not([id*="hubspot"]):not([class*="widget"]) {
+      .plenejagov-app *:not([id*="hubspot"]):not([class*="widget"]) {
         filter: none !important;
       }
     `;
