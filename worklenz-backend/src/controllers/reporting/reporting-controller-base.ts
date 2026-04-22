@@ -179,7 +179,7 @@ export default abstract class ReportingControllerBase extends WorklenzController
 
     // Check user's role
     const roleQuery = `
-      SELECT r.key 
+      SELECT r.name, r.admin_role, r.owner
       FROM roles r
       JOIN team_members tm ON tm.role_id = r.id
       WHERE tm.user_id = $1 AND tm.team_id = $2
@@ -188,10 +188,16 @@ export default abstract class ReportingControllerBase extends WorklenzController
 
     if (roleResult.rows.length === 0) return "";
 
-    const roleKey = roleResult.rows[0].key;
+    const role = roleResult.rows[0];
+    const roleName = role.name?.toLowerCase().trim();
 
-    // Only apply filter for Team Leads
-    if (roleKey === 'TEAM_LEAD') {
+    // Admins and owners can see all projects.
+    if (role.admin_role || role.owner) {
+      return "";
+    }
+
+    // Only apply the reduced scope for an explicit Team Lead role.
+    if (["team lead", "team_lead", "teamlead"].includes(roleName)) {
       // Team Leads can only see projects they manage
       return `AND p.id IN (
         SELECT pm.project_id 
@@ -205,7 +211,7 @@ export default abstract class ReportingControllerBase extends WorklenzController
       )`;
     }
 
-    // Admins and Owners can see all projects
+    // Members and any other custom roles keep the current unrestricted behavior.
     return "";
   }
 

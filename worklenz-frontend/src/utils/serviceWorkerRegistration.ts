@@ -22,17 +22,22 @@ export function registerSW(config?: Config) {
     const swUrl = '/sw.js';
 
     if (isLocalhost) {
-      // This is running on localhost. Let's check if a service worker still exists or not.
-      checkValidServiceWorker(swUrl, config);
-
-      // Add some additional logging to localhost, pointing developers to the
-      // service worker/PWA documentation.
-      navigator.serviceWorker.ready.then(() => {
-        console.log(
-          'This web app is being served cache-first by a service ' +
-          'worker. To learn more, visit https://bit.ly/CRA-PWA'
-        );
-      });
+      // Local development should always prefer fresh assets and runtime config.
+      // Unregister any stale worker left from prior builds and skip registration.
+      navigator.serviceWorker
+        .getRegistrations()
+        .then(registrations => {
+          return Promise.all(registrations.map(registration => registration.unregister()));
+        })
+        .then(() => {
+          console.log('Service workers disabled on localhost to avoid stale cached assets.');
+        })
+        .catch(error => {
+          console.error('Failed to unregister service workers on localhost:', error);
+          if (config && config.onError) {
+            config.onError(error);
+          }
+        });
     } else {
       // Is not localhost. Just register service worker
       registerValidSW(swUrl, config);
